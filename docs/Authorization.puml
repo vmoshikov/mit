@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor User
+
+User -> App1 : HTTP request
+App1 ->> KeyCloak : Flask Middleware auth
+KeyCloak -->> App1 : 200 Success / 401 Unauthenticated
+App1 --> User
+
+User -> App2 : HTTP request
+App2 ->> KeyCloak  : Flask Middleware auth
+KeyCloak -->> App2 : 200 Success / 401 Unauthenticated
+App2 --> User
+
+@enduml
