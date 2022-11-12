@@ -1,0 +1,6 @@
+FROM jboss/keycloak:13.0.0
+
+ENV KC_HEALTH_ENABLED=true
+ENV KC_METRICS_ENABLED=true
+
+ENV DB_VENDOR=postgres

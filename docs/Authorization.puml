@@ -9,6 +9,7 @@ App1 ->> KeyCloak : Flask Middleware auth
 KeyCloak -->> App1 : 200 Success / 401 Unauthenticated
 App1 --> User
 
+autonumber
 User -> App2 : HTTP request
 App2 ->> KeyCloak  : Flask Middleware auth
 KeyCloak -->> App2 : 200 Success / 401 Unauthenticated
