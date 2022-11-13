@@ -1,6 +1,19 @@
 version: "3"
 
 services:
+  nginx:
+    build: ./build/nginx/
+    ports:
+      - "80:80"
+    depends_on:
+      - keycloak
+      - core
+    volumes:
+      - ./build/nginx/:/etc/nginx/conf.d/
+    networks:
+      - testMIT
+
+
   postgresql:
     build: ./build/postgresql
     restart: always
