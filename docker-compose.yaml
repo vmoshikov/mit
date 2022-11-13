@@ -58,7 +58,9 @@ services:
     environment:
       SECRET_KEY: ${KC_SECRET_KEY_CORE}
     ports:
-      - "8080:8080"
+      - "5000:5000"
+    volumes:
+      - ./components/app1:/app/
     networks:
       - testMIT
 
