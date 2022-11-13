@@ -1,0 +1,10 @@
+{
+  "realm": "CoreRealm",
+  "auth-server-url": "http://keycloak:8080/auth",
+  "ssl-required": "external",
+  "resource": "core",
+  "credentials": {
+    "secret": "7NYQUC2KEgdolRzSNctI9MyvCEaTTbff"
+  },
+  "confidential-port": 0
+}
