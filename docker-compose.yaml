@@ -18,6 +18,10 @@ services:
       - postgresql
     build: ./build/keycloak
     restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./build/keycloak/import:/tmp/import
     environment:
       DB_ADDR: postgresql
       DB_DATABASE: ${POSTGRESQL_DB}
@@ -25,6 +29,19 @@ services:
       DB_PASSWORD: ${POSTGRESQL_PASS}
       KEYCLOAK_USER: ${KEYCLOAK_USER}
       KEYCLOAK_PASSWORD: ${KEYCLOAK_PASSWORD}
+      PROXY_ADDRESS_FORWARDING: true
+      REDIRECT_SOCKET: "proxy-http"
+      KEYCLOAK_FRONTEND_URL: http://localhost/auth
+      KEYCLOAK_IMPORT: /tmp/import/general.json
+    networks:
+      - testMIT
+
+  core:
+    depends_on:
+      - keycloak
+    build: ./components/app1
+    environment:
+      SECRET_KEY: ${KC_SECRET_KEY_CORE}
     ports:
       - "8080:8080"
     networks:

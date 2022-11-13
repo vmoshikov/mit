@@ -1,6 +1,7 @@
-FROM jboss/keycloak:13.0.0
+FROM jboss/keycloak:latest
 
 ENV KC_HEALTH_ENABLED=true
 ENV KC_METRICS_ENABLED=true
-
 ENV DB_VENDOR=postgres
+
+EXPOSE 8080
