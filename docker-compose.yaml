@@ -64,6 +64,20 @@ services:
     networks:
       - testMIT
 
+  dashboard:
+    depends_on:
+      - keycloak
+    build: ./components/app2
+    environment:
+      SECRET_KEY: ${KC_SECRET_KEY_DASHBOARD}
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./components/app2:/app/
+    networks:
+      - testMIT
+
+
 networks:
   testMIT:
     driver: bridge
