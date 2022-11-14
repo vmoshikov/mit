@@ -12,21 +12,20 @@ from keycloak.extensions.flask import AuthenticationMiddleware
 app = Flask(__name__)
 
 app.config["SECRET_KEY"] = environ.get('SECRET_KEY')
-
 app.wsgi_app = AuthenticationMiddleware(
         app.wsgi_app,
         app.config,
         app.session_interface,
-        callback_url=f"http://localhost/oidc_callback",
+        callback_url=f"http://localhost/dashboard/oidc_callback",
 )
-
 kc = Client()
 
 
 @app.route('/')
+@app.route('/dashboard/')
 def index():
     result = dict()
-    current_app.logger.debug(f"Keycloak user: {kc.username}")
+    current_app.logger.debug('We in dashboard page in second app')
 
     if session.get('user'):
         current_app.logger.debug('We has user info')
@@ -35,13 +34,13 @@ def index():
     return render_template('home.html', result=result)
 
 
-@app.route("/oidc_callback")
+@app.route("/dashboard/oidc_callback")
 def oidc_callback():
     user = session["user"]
     return f"Howdy {user}"
 
 
-@app.route('/logout', methods=['GET'])
+@app.route('/dashboard/logout', methods=['GET'])
 def logout():
     """ Initiate authentication """
     tokens = json.loads(session.get('tokens'))
@@ -63,7 +62,7 @@ def logout():
     return redirect('/')
 
 
-@app.route('/login', methods=['GET'])
+@app.route('/dashboard/login', methods=['GET'])
 def login():
     """ Initiate authentication """
     url, state = kc.login()
