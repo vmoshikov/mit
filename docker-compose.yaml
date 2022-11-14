@@ -47,7 +47,7 @@ services:
       PROXY_ADDRESS_FORWARDING: true
       REDIRECT_SOCKET: "proxy-http"
       KEYCLOAK_FRONTEND_URL: http://localhost/auth
-      KEYCLOAK_IMPORT: /tmp/import/general.json
+#      KEYCLOAK_IMPORT: "/tmp/import/general.json -Dkeycloak.profile.feature.upload_scripts=enabled"
     networks:
       - testMIT
 
