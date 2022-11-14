@@ -6,5 +6,6 @@
   "credentials": {
     "secret": "7NYQUC2KEgdolRzSNctI9MyvCEaTTbff"
   },
-  "confidential-port": 0
+  "confidential-port": 0,
+  "policy-enforcer": {}
 }
