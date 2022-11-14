@@ -4,7 +4,7 @@
   "ssl-required": "external",
   "resource": "core",
   "credentials": {
-    "secret": "FIrZ9L6m6UZvnBuEMDX9JsoIVt69215f"
+    "secret": "7NYQUC2KEgdolRzSNctI9MyvCEaTTbff"
   },
   "confidential-port": 0,
   "policy-enforcer": {}
