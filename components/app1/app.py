@@ -1,8 +1,6 @@
 from os import environ
 
 from flask import Flask
-from flask import session, redirect
-
 from keycloak import Client
 from keycloak.extensions.flask import AuthenticationMiddleware
 
